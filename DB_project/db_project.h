@@ -15,6 +15,9 @@ public:
     explicit DB_project(QWidget *parent = 0);
     ~DB_project();
 
+private slots:
+    void on_login_btn_clicked();
+
 private:
     Ui::DB_project *ui;
 };

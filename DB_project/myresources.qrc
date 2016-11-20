@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>Resource/img/all_icon.png</file>
+        <file>Resource/img/bg.jpg</file>
+        <file>Resource/img/JJang.jpg</file>
+        <file>Resource/img/JJang1.jpg</file>
+        <file>Resource/img/left_icon.png</file>
+        <file>Resource/img/right_icon.png</file>
+        <file>Resource/img/search_icon.png</file>
+        <file>DB_project.pro</file>
+    </qresource>
+</RCC>
