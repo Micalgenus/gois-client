@@ -2,6 +2,14 @@
 #define DB_PROJECT_H
 
 #include <QMainWindow>
+#include <QObject>
+#include <QUrl>
+#include <QDateTime>
+#include <QFile>
+#include <QDebug>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkReply>
 
 #define PATH (QApplication::applicationDirPath() + "/../../")
 
@@ -18,7 +26,7 @@ public:
     ~DB_project();
 
 private slots:
-    void on_login_btn_clicked();
+    //void on_login_btn_clicked();
 
 private:
     Ui::DB_project *ui;

@@ -4,6 +4,7 @@
 #include<QImage>
 #include<QPixmap>
 #include<QIcon>
+
 DB_project::DB_project(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DB_project)
@@ -40,7 +41,19 @@ DB_project::~DB_project()
     delete ui;
 }
 
+/*
 void DB_project::on_login_btn_clicked()
 {
+    QUrl serviceUrl = QUrl("https://api.gois.me/admni/login");
+    QNetworkRequest request(serviceUrl);
+    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www/form=urlencoded");
+
+    QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
+
+    QByteArray postData;
+
+    postData.append("admin_id=gois").append("&").append("admin_pw=getonese!fintoshape@");
+    networkManager->post(request,postData);
 
 }
+*/
