@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#define PATH (QApplication::applicationDirPath() + "/../../")
+
 namespace Ui {
 class DB_project;
 }
