@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     path = QApplication::applicationDirPath();
 
     QPalette* palette = new QPalette();
-    palette->setBrush(QPalette::Background, *(new QBrush(*(new QPixmap(path+"/../../img/bg.jpg")))));
+    palette->setBrush(QPalette::Background, *(new QBrush(*(new QPixmap(path+"/img/bg.jpg")))));
     m_window.setPalette(*palette);
 
 
