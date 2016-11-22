@@ -34,6 +34,13 @@ DB_project::DB_project(QWidget *parent) :
     QIcon Right_icon(Right_btn);
     ui->right_btn->setIcon(Right_icon);
 
+    ui->s_login_group->hide();
+
+    //login
+    nam = new QNetworkAccessManager(this);
+    connect(ui->login_btn,SIGNAL(clicked()),this,SLOT(on_login_btn_clicked()));
+    connect(nam,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
+
 }
 
 DB_project::~DB_project()
@@ -41,19 +48,45 @@ DB_project::~DB_project()
     delete ui;
 }
 
-/*
 void DB_project::on_login_btn_clicked()
 {
-    QUrl serviceUrl = QUrl("https://api.gois.me/admni/login");
-    QNetworkRequest request(serviceUrl);
-    request.setHeader(QNetworkRequest::ContentTypeHeader,"application/x-www/form=urlencoded");
+    if(ui->login_btn->isEnabled()) ui->login_btn->setEnabled(false);
 
-    QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
-
-    QByteArray postData;
-
-    postData.append("admin_id=gois").append("&").append("admin_pw=getonese!fintoshape@");
-    networkManager->post(request,postData);
-
+    QString url = "http://api.gois.me/admin/login";
+    //QString paras = ui->pTextEdit_paras->toPlainText();
+   // qDebug() << paras;
+    QByteArray post_data;
+    //post_data.append(paras);
+    QString admin_id = ui->id_txt->toPlainText();
+    QString admin_pw = ui->pw_txt->toPlainText();
+    post_data.append("admin_id=").append(admin_id).append("&").append("admin_pw=").append(admin_pw);
+    QNetworkRequest request = QNetworkRequest(QUrl(url));
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    if(post_data.isEmpty()){
+        nam->get(request);
+    }
+    else{
+        nam->post(request,post_data);
+    }
 }
-*/
+
+void DB_project::finished(QNetworkReply *reply){
+    if(reply->error() == QNetworkReply::NoError){
+        ui->id_txt->setText(QObject::tr(reply->readAll()));
+        ui->login_group->hide();
+        ui->s_login_group->show();
+    }
+    else{
+        //ui->textEdit_result->setPlainText(reply->errorString());
+        ui->id_txt->setText(reply->errorString());
+    }
+    if(!ui->login_btn->isEnabled())
+        ui->login_btn->setEnabled(true);
+}
+
+
+void DB_project::on_login_btn_5_clicked()
+{
+    ui->s_login_group->hide();
+    ui->login_group->show();
+}

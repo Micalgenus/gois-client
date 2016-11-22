@@ -10,6 +10,7 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
+#include <QTextCodec>
 
 #define PATH (QApplication::applicationDirPath() + "/../../")
 
@@ -26,10 +27,14 @@ public:
     ~DB_project();
 
 private slots:
-    //void on_login_btn_clicked();
+    void on_login_btn_clicked();
+    void finished(QNetworkReply *reply);
+
+    void on_login_btn_5_clicked();
 
 private:
     Ui::DB_project *ui;
+    QNetworkAccessManager *nam;
 };
 
 #endif // DB_PROJECT_H
