@@ -27,6 +27,7 @@ DISTFILES += \
     Resource/img/left_icon.png \
     Resource/img/right_icon.png \
     Resource/img/search_icon.png \
-    img
+    img \
+    listview.qml
 
 RESOURCES +=

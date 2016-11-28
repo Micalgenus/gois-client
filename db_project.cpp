@@ -4,6 +4,7 @@
 #include<QImage>
 #include<QPixmap>
 #include<QIcon>
+#include<QMessageBox>
 
 DB_project::DB_project(QWidget *parent) :
     QMainWindow(parent),
@@ -57,8 +58,8 @@ void DB_project::on_login_btn_clicked()
    // qDebug() << paras;
     QByteArray post_data;
     //post_data.append(paras);
-    QString admin_id = ui->id_txt->toPlainText();
-    QString admin_pw = ui->pw_txt->toPlainText();
+    QString admin_id = ui->id_txt->text();
+    QString admin_pw = ui->pw_txt->text();
     post_data.append("admin_id=").append(admin_id).append("&").append("admin_pw=").append(admin_pw);
     QNetworkRequest request = QNetworkRequest(QUrl(url));
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -71,15 +72,20 @@ void DB_project::on_login_btn_clicked()
 }
 
 void DB_project::finished(QNetworkReply *reply){
+    QString check;
     if(reply->error() == QNetworkReply::NoError){
-        ui->id_txt->setText(QObject::tr(reply->readAll()));
-        ui->login_group->hide();
-        ui->s_login_group->show();
+        check = QObject::tr(reply->readAll());
+        if(check == "{\"status\":100}") {
+            ui->login_group->hide();
+            ui->s_login_group->show();
+        }
+        else QMessageBox::information(this, "Login", "Your id or password not correct!");
     }
     else{
         //ui->textEdit_result->setPlainText(reply->errorString());
         ui->id_txt->setText(reply->errorString());
     }
+    ui->pw_txt->clear();
     if(!ui->login_btn->isEnabled())
         ui->login_btn->setEnabled(true);
 }
