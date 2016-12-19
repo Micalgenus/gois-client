@@ -24,6 +24,7 @@ class DB_project : public QMainWindow
 
 public:
     explicit DB_project(QWidget *parent = 0);
+    int mod_check;
     ~DB_project();
 
 private slots:
@@ -32,15 +33,19 @@ private slots:
 
     void on_login_btn_5_clicked();
 
-    void on_guest_table_activated(const QModelIndex &index);
-
     void on_guest_table_clicked(const QModelIndex &index);
 
     void on_add_member_btn_clicked();
 
+    //self made
+    void MakeTableView(QNetworkReply *reply);
+    void InfoSetTableView();
+
+
 private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;
+
 };
 
 #endif // DB_PROJECT_H
