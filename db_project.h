@@ -49,6 +49,7 @@ private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;
     QString setadmin_pw;
+    QString birth;
     dialog_createkey* this_dialog;
 
 };

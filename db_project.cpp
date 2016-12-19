@@ -132,6 +132,7 @@ void DB_project::finished(QNetworkReply *reply){
         QStringList list_id;
         QStringList list_name;
         QStringList list_gender;
+        QStringList list_birth;
 
         if(reply->error() == QNetworkReply::NoError){
             check = QObject::tr(reply->readAll());
@@ -152,14 +153,16 @@ void DB_project::finished(QNetworkReply *reply){
                     list_id.append(obj["id"].toString());
                     list_name.append(obj["name"].toString());
                     list_gender.append(obj["sex"].toString());
+                    list_birth.append(obj["birth"].toString());
                 }
 
                 //Table View
-                QStandardItemModel *model = new QStandardItemModel(ArraySize,3,this); //2 Rows and 3 Columns
+                QStandardItemModel *model = new QStandardItemModel(ArraySize,4,this); //2 Rows and 3 Columns
 
                 model->setHorizontalHeaderItem(0, new QStandardItem(QString("ID")));
                 model->setHorizontalHeaderItem(1, new QStandardItem(QString("Name")));
                 model->setHorizontalHeaderItem(2, new QStandardItem(QString("gender")));
+                model->setHorizontalHeaderItem(3, new QStandardItem(QString("birth")));
 
                 ui->guest_table->setModel(model);
 
@@ -168,6 +171,7 @@ void DB_project::finished(QNetworkReply *reply){
                     model->setItem(i,0,new QStandardItem(QString(list_id[i])));
                     model->setItem(i,1,new QStandardItem(QString(list_name[i])));
                     model->setItem(i,2,new QStandardItem(QString(list_gender[i])));
+                    model->setItem(i,3,new QStandardItem(QString(list_birth[i])));
                 }
             }
             else QMessageBox::information(this, "JsonList", "You don't load Json Data");
@@ -243,12 +247,14 @@ void DB_project::finished(QNetworkReply *reply){
                 float mineral = jsonObject["mineral"].toString().toFloat();
                 float body_fat = jsonObject["body_fat"].toString().toFloat();
                 float weight = jsonObject["weight"].toString().toFloat();
+                float height = jsonObject["height"].toString().toFloat();
                 float s_muscle = jsonObject["s_muscle"].toString().toFloat();
                 float bmi = jsonObject["bmi"].toString().toFloat();
                 float p_body_fat = jsonObject["p_body_fat"].toString().toFloat();
                 float waist_hip = jsonObject["waist_hip"].toString().toFloat();
 
                 //라벨 처리
+                ui->HEIGHT_label->setText(jsonObject["height"].toString());
                 ui->wicell_label->setText(jsonObject["wicell"].toString("F1"));
                 ui->wocell_label->setText(jsonObject["wocell"].toString());
                 ui->protein_label->setText(jsonObject["protein"].toString());
@@ -355,6 +361,13 @@ void DB_project::on_guest_table_clicked(const QModelIndex &index)
 
     QString admin_id = ui->id_txt->text();
 
+    birth = selected[3].data().toString();
+
+    //인바디지에 id,이름,성별,나이. 출력
+    ui->ID_label->setText(member_id);
+    ui->GENDER_label->setText(selected[2].data().toString());
+    ui->AGE_label->setText("23");
+
 
 
     qDebug() << member_id;
@@ -402,6 +415,12 @@ void DB_project::on_inbody_info_list_clicked(const QModelIndex &index)
 
     QString admin_id = ui->id_txt->text();
 
+    //datelabel 추가
+    ui->date_time_label->setText(selected[1].data().toString());
+    //qDebug()<<"생일 ; "<<birth;
+    //qDebug()<<"sdfsd : "<<birth[0];
+    //qDebug()<<"date : "<<selected[1].data().toString();
+    ui->AGE_label->setText(birth);
 
     //통신
     QString url = "http://api.gois.me/info/detail";
