@@ -151,63 +151,43 @@ void DB_project::finished(QNetworkReply *reply){
     qDebug() << check;
             QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
             QJsonObject jsonObject = jsonResponse.object();
-            int ArraySize = jsonObject["size"].toInt();
-            QJsonArray jsonArray = jsonObject["list"].toArray();
+
             int ArrayStatus = jsonObject["status"].toInt();
+            if(ArrayStatus == 100) {
+                int ArraySize = jsonObject["size"].toInt();
+                QJsonArray jsonArray = jsonObject["list"].toArray();
 
-            foreach (const QJsonValue & value, jsonArray) {
-                QJsonObject obj = value.toObject();
 
-                list_id.append(obj["id"].toString());
-                list_name.append(obj["name"].toString());
-                list_gender.append(obj["sex"].toString());
+                foreach (const QJsonValue & value, jsonArray) {
+                    QJsonObject obj = value.toObject();
+
+                    list_id.append(obj["id"].toString());
+                    list_name.append(obj["name"].toString());
+                    list_gender.append(obj["sex"].toString());
+                }
+
+                //Table View
+                QStandardItemModel *model = new QStandardItemModel(ArraySize,3,this); //2 Rows and 3 Columns
+
+                model->setHorizontalHeaderItem(0, new QStandardItem(QString("ID")));
+                model->setHorizontalHeaderItem(1, new QStandardItem(QString("Name")));
+                model->setHorizontalHeaderItem(2, new QStandardItem(QString("gender")));
+
+                ui->guest_table->setModel(model);
+
+                //row 값넣기
+                for(int i = 0; i < ArraySize; i++) {
+                    model->setItem(i,0,new QStandardItem(QString(list_id[i])));
+                    model->setItem(i,1,new QStandardItem(QString(list_name[i])));
+                    model->setItem(i,2,new QStandardItem(QString(list_gender[i])));
+                }
             }
-
-
-
-
-
-
-            if(check == "{\"status\":100}") {
-
-                InfoSetTableView();    //login시 TableView보이기
-            }
-            else QMessageBox::information(this, "Login", "Your id or password not correct!");
+            else QMessageBox::information(this, "JsonList", "You don't load Json Data");
         }
         else{
-            //ui->textEdit_result->setPlainText(reply->errorString());
-            ui->id_txt->setText(reply->errorString());
+            QMessageBox::information(this, "Error", reply->errorString());
         }
-        ui->pw_txt->clear();
-        if(!ui->login_btn->isEnabled())
-            ui->login_btn->setEnabled(true);
-
-
-
-
-
-
-        //Table View
-        int row = 10;
-
-        QStandardItemModel *model = new QStandardItemModel(row,3,this); //2 Rows and 3 Columns
-
-        model->setHorizontalHeaderItem(0, new QStandardItem(QString("name")));
-        model->setHorizontalHeaderItem(1, new QStandardItem(QString("birth")));
-        model->setHorizontalHeaderItem(2, new QStandardItem(QString("gender")));
-
-        ui->guest_table->setModel(model);
-
-        //row 값넣기
-        model->setItem(0,0,new QStandardItem(QString("Han")));
-        model->setItem(0,1,new QStandardItem(QString("930327")));
-        model->setItem(0,2,new QStandardItem(QString("Man")));
-        model->setItem(1,0,new QStandardItem(QString("Han")));
-        model->setItem(1,1,new QStandardItem(QString("930327")));
-        model->setItem(1,2,new QStandardItem(QString("Man")));
-
     }
-    //nam->deleteLater();
 }
 
 
