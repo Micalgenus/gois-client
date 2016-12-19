@@ -37,7 +37,12 @@ DB_project::DB_project(QWidget *parent) :
     nam = new QNetworkAccessManager(this);
     connect(nam,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
    //nam1 = new QNetworkAccessManager(this);
-   //
+
+
+    //test
+    ui->ID_label->setText("SM1092");
+    ui->weight_progressBar->setValue(46);
+    ui->s_muscle_progressBar->setValue(56);
 
 }
 

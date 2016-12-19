@@ -314,6 +314,9 @@
      <string/>
     </property>
     <widget class="QLabel" name="inbody_paper">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>88</x>
@@ -322,11 +325,708 @@
        <height>741</height>
       </rect>
      </property>
-     <property name="autoFillBackground">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="weight_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>275</y>
+       <width>330</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>210</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
       <bool>false</bool>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background-image:url(./Inbody_info.png);</string>
+    </widget>
+    <widget class="QProgressBar" name="s_muscle_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>305</y>
+       <width>330</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>180</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="body_fat_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>335</y>
+       <width>330</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>580</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="bmi_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>405</y>
+       <width>330</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>60</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="p_body_fat_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>435</y>
+       <width>330</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>63</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="waist_hip_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>467</y>
+       <width>330</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="righta_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>193</x>
+       <y>540</y>
+       <width>241</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>200</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="lefta_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>193</x>
+       <y>585</y>
+       <width>241</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>200</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="body_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>193</x>
+       <y>630</y>
+       <width>241</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>150</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="rightf_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>193</x>
+       <y>680</y>
+       <width>241</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>150</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="leftf_progressBar">
+     <property name="geometry">
+      <rect>
+       <x>193</x>
+       <y>720</y>
+       <width>241</width>
+       <height>10</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>150</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ID_label">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>40</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="AGE_label">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>40</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="HEIGHT_label">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>40</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="GENDER_label">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>40</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="date_time_label">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>40</y>
+       <width>141</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="wicell_label">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>102</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="wocell_label">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>127</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="protein_label">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>153</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mineral_label">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>177</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="body_fat_label">
+     <property name="geometry">
+      <rect>
+       <x>195</x>
+       <y>203</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Wbody_label">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>110</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="muscle_label">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>130</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="osseous_label">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>180</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="add_body_fat_label">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>130</y>
+       <width>56</width>
+       <height>12</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="weight_label">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>150</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_wicell_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>100</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_wocell_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>125</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_protein_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>150</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_mineral_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>175</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_body_fat_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>200</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_weight_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>265</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_s_muscle_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>295</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_body_fat_label_2">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>325</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_bmi_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>395</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_p_body_fat__label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>425</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="NR_waist_hip__label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>460</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_righta_label">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>540</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_righta_label_2">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>540</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_lefta_label">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>580</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_lefta_label_2">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>580</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_body_label">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>625</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_body_label_2">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>625</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_rightf_label">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>670</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_rightf_label_2">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>670</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_leftf_label">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>715</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SE_leftf_label_2">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>715</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="edema_label">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>720</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="edema_label_2">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>720</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
      </property>
      <property name="text">
       <string/>
