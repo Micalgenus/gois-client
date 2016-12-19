@@ -134,18 +134,18 @@ void DB_project::finished(QNetworkReply *reply){
         if(reply->error() == QNetworkReply::NoError){
             check = QObject::tr(reply->readAll());
             reply->deleteLater();
-    //qDebug() << check;
+    qDebug() << check;
             QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
             QJsonObject jsonObject = jsonResponse.object();
-            QJsonArray ArraySize = jsonObject["size"].toArray();
+            //QJsonArray ArraySize = jsonObject["size"].toArray();
             QJsonArray jsonArray = jsonObject["list"].toArray();
-            QJsonArray ArrayStatus = jsonObject["status"].toArray();
+            //QJsonArray ArrayStatus = jsonObject["status"].toArray();
 
-            QJsonValue value = ArraySize;
-            tmp = value.toString();
-            qDebug() << tmp;
-            QJsonObject obj = value.toObject();
-            tmp = obj["size"].toString();
+//            QJsonValue value = ArraySize;
+//            tmp = value.toString();
+//            qDebug() << tmp;
+//            QJsonObject obj = value.toObject();
+//            tmp = obj["size"].toString();
 
             foreach (const QJsonValue & value, jsonArray) {
                 QJsonObject obj = value.toObject();
@@ -155,10 +155,12 @@ void DB_project::finished(QNetworkReply *reply){
                 list_name.append(obj["name"].toString());
                 list_gender.append(obj["sex"].toString());
 
+                qDebug() << list_id;
+
             }
-            qDebug() << "list_id[0] = ";
+
             qDebug() << list_id[0];
-            qDebug() << list_id[1];
+            //qDebug() << list_id[1];
 
 
 
