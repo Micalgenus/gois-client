@@ -5,6 +5,7 @@
 #include<QPixmap>
 #include<QIcon>
 #include<QMessageBox>
+#include<QStandardItemModel>
 
 DB_project::DB_project(QWidget *parent) :
     QMainWindow(parent),
@@ -41,6 +42,31 @@ DB_project::DB_project(QWidget *parent) :
     nam = new QNetworkAccessManager(this);
     connect(ui->login_btn,SIGNAL(clicked()),this,SLOT(on_login_btn_clicked()));
     connect(nam,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
+
+
+    //Table View
+    int row = 10;
+
+    QStandardItemModel *model = new QStandardItemModel(row,3,this); //2 Rows and 3 Columns
+
+    model->setHorizontalHeaderItem(0, new QStandardItem(QString("name")));
+    model->setHorizontalHeaderItem(1, new QStandardItem(QString("birth")));
+    model->setHorizontalHeaderItem(2, new QStandardItem(QString("gender")));
+
+    ui->guest_table->setModel(model);
+
+    //row 값넣기
+    model->setItem(0,0,new QStandardItem(QString("Han")));
+    model->setItem(0,1,new QStandardItem(QString("930327")));
+    model->setItem(0,2,new QStandardItem(QString("Man")));
+    model->setItem(1,0,new QStandardItem(QString("Han")));
+    model->setItem(1,1,new QStandardItem(QString("930327")));
+    model->setItem(1,2,new QStandardItem(QString("Man")));
+
+
+qDebug() << "test";
+
+
 
 }
 
@@ -95,4 +121,33 @@ void DB_project::on_login_btn_5_clicked()
 {
     ui->s_login_group->hide();
     ui->login_group->show();
+}
+
+//Table view 선택
+void DB_project::on_guest_table_activated(const QModelIndex &index)
+{
+
+
+}
+
+
+void DB_project::on_guest_table_clicked(const QModelIndex &index)
+{
+    QVariant rowid;
+
+    QItemSelectionModel *selections = ui->guest_table->selectionModel();
+    QModelIndexList selected = selections->selectedIndexes();
+
+    for(int i = 0 ; i < selected.size(); i++ )
+    {
+      //rowid = selected[i].row();
+      rowid = selected[i].data();
+      qDebug() << rowid.toString();
+    }
+}
+
+//member add btn
+void DB_project::on_add_member_btn_clicked()
+{
+
 }

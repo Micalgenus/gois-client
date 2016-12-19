@@ -32,6 +32,12 @@ private slots:
 
     void on_login_btn_5_clicked();
 
+    void on_guest_table_activated(const QModelIndex &index);
+
+    void on_guest_table_clicked(const QModelIndex &index);
+
+    void on_add_member_btn_clicked();
+
 private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;

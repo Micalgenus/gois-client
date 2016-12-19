@@ -172,6 +172,8 @@
       <string/>
      </property>
     </widget>
+    <zorder>inbody_img</zorder>
+    <zorder>s_login_group</zorder>
    </widget>
    <widget class="QGroupBox" name="guest_list">
     <property name="geometry">
@@ -194,6 +196,35 @@
        <height>531</height>
       </rect>
      </property>
+     <property name="baseSize">
+      <size>
+       <width>1000</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>나눔바른고딕</family>
+      </font>
+     </property>
+     <property name="autoScrollMargin">
+      <number>15</number>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>65</number>
+     </attribute>
     </widget>
     <widget class="QPushButton" name="search_btn">
      <property name="geometry">
@@ -309,7 +340,7 @@
      <property name="geometry">
       <rect>
        <x>80</x>
-       <y>30</y>
+       <y>15</y>
        <width>91</width>
        <height>50</height>
       </rect>
@@ -344,6 +375,28 @@
      </property>
      <property name="text">
       <string>Logout</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="add_member_btn">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>69</y>
+       <width>81</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Blippo Blk BT</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string>member</string>
      </property>
     </widget>
    </widget>
