@@ -1,4 +1,5 @@
 #include "db_project.h"
+#include "dialog_createkey.h"
 #include "ui_db_project.h"
 
 #include<QImage>
@@ -77,6 +78,7 @@ void DB_project::on_login_btn_clicked()
     //post_data.append(paras);
     QString admin_id = ui->id_txt->text();
     QString admin_pw = ui->pw_txt->text();
+    setadmin_pw = ui->pw_txt->text();
     post_data.append("admin_id=").append(admin_id).append("&").append("admin_pw=").append(admin_pw);
     QNetworkRequest request = QNetworkRequest(QUrl(url));
     request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -120,8 +122,20 @@ void DB_project::finished(QNetworkReply *reply){
         if(!ui->login_btn->isEnabled())
             ui->login_btn->setEnabled(true);
     }
-    else if(mod_check == 1){
-
+    else if(mod_check == 1){//계정생성
+        QString check;
+        if(reply->error() == QNetworkReply::NoError){
+            check = QObject::tr(reply->readAll());
+            qDebug()<<check;
+            if(check == "{\"status\":100}") {
+               // qDebug()<<"굳";
+            }
+            else QMessageBox::information(this, "Create", "Your User_Infor not correct!");
+        }
+        else{
+            //ui->id_txt->setText(reply->errorString());
+        }
+        //ui->pw_txt->clear();
     }
     else if(mod_check == 2) {
         QString check;
@@ -269,5 +283,9 @@ void DB_project::on_guest_table_clicked(const QModelIndex &index)
 //member add btn
 void DB_project::on_add_member_btn_clicked()
 {
-
+    //member 창 생성
+    dialog_createkey member(this);
+    member.set_admin(ui->id_txt->text(),setadmin_pw, nam, &mod_check);
+    member.exec();
+    member.show();
 }

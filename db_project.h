@@ -45,6 +45,7 @@ private slots:
 private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;
+    QString setadmin_pw;
 
 };
 
