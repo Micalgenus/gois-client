@@ -1,5 +1,4 @@
 #include "db_project.h"
-#include "dialog_createkey.h"
 #include "ui_db_project.h"
 
 #include<QImage>
@@ -127,8 +126,14 @@ void DB_project::finished(QNetworkReply *reply){
         if(reply->error() == QNetworkReply::NoError){
             check = QObject::tr(reply->readAll());
             qDebug()<<check;
-            if(check == "{\"status\":100}") {
-               // qDebug()<<"굳";
+
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
+            QJsonObject jsonObject = jsonResponse.object();
+            QString jsonKey = jsonObject["key"].toString();
+            int jsonStatus = jsonObject["status"].toInt();
+            if(jsonStatus == 100) {
+              QMessageBox::information(this, "Key", "Your Key : "+ jsonKey);
+              this_dialog->close();
             }
             else QMessageBox::information(this, "Create", "Your User_Infor not correct!");
         }
@@ -253,6 +258,7 @@ void DB_project::on_add_member_btn_clicked()
 {
     //member 창 생성
     dialog_createkey member(this);
+    this_dialog = &member;
     member.set_admin(ui->id_txt->text(),setadmin_pw, nam, &mod_check);
     member.exec();
     member.show();

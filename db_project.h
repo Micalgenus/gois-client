@@ -11,6 +11,7 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
 #include <QTextCodec>
+#include "dialog_createkey.h"
 
 #define PATH (QApplication::applicationDirPath() + "/../../")
 
@@ -46,6 +47,7 @@ private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;
     QString setadmin_pw;
+    dialog_createkey* this_dialog;
 
 };
 
