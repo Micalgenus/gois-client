@@ -40,9 +40,10 @@ DB_project::DB_project(QWidget *parent) :
 
 
     //test
+    /*
     ui->ID_label->setText("SM1092");
     ui->weight_progressBar->setValue(46);
-    ui->s_muscle_progressBar->setValue(56);
+    ui->s_muscle_progressBar->setValue(56);*/
 
 }
 
@@ -247,7 +248,35 @@ void DB_project::finished(QNetworkReply *reply){
                 float p_body_fat = jsonObject["p_body_fat"].toString().toFloat();
                 float waist_hip = jsonObject["waist_hip"].toString().toFloat();
 
-                qDebug() << test1;
+                //라벨 처리
+                ui->wicell_label->setText(jsonObject["wicell"].toString("F1"));
+                ui->wocell_label->setText(jsonObject["wocell"].toString());
+                ui->protein_label->setText(jsonObject["protein"].toString());
+                ui->mineral_label->setText(jsonObject["mineral"].toString());
+                ui->body_fat_label->setText(jsonObject["body_fat"].toString());
+                ui->weight_label->setText(jsonObject["weight"].toString());
+                //add
+                ui->Wbody_label->setText(QString::number(wicell+wocell));
+                ui->muscle_label->setText(QString::number(wicell+wocell+protein));
+                ui->add_body_fat_label->setText(QString::number(wicell+wocell+protein+mineral));
+                ui->add_body_fat_label->setText(QString::number(wicell+wocell+protein+mineral+body_fat));
+
+                //process bar
+                ui->weight_progressBar->setValue(weight);
+                ui->s_muscle_progressBar->setValue(s_muscle);
+                ui->body_fat_progressBar->setValue(body_fat);
+                ui->bmi_progressBar->setValue(bmi);
+                ui->p_body_fat_progressBar->setValue(p_body_fat);
+                ui->waist_hip_progressBar->setValue(waist_hip);
+
+                //Lean Balance
+                ui->righta_progressBar->setValue(62);
+                ui->lefta_progressBar->setValue(60);
+                ui->body_progressBar->setValue(58);
+                ui->rightf_progressBar->setValue(94);
+                ui->leftf_progressBar->setValue(94);
+
+                //qDebug() << test1;
                 qDebug() << wicell;
                 qDebug() << wocell;
                 qDebug() << protein;
@@ -255,7 +284,7 @@ void DB_project::finished(QNetworkReply *reply){
                 qDebug() << body_fat;
                 qDebug() << weight;
                 qDebug() << s_muscle;
-                qDebug() << bmi;
+                qDebug() << "bmi : "<<bmi;
                 qDebug() << p_body_fat;
                 qDebug() << waist_hip;
 
