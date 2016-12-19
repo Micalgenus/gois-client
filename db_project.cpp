@@ -54,7 +54,7 @@ DB_project::DB_project(QWidget *parent) :
 
     //login
     nam = new QNetworkAccessManager(this);
-connect(nam,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
+    connect(nam,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
    //nam1 = new QNetworkAccessManager(this);
    //
 
@@ -153,7 +153,7 @@ void DB_project::finished(QNetworkReply *reply){
         if(reply->error() == QNetworkReply::NoError){
             check = QObject::tr(reply->readAll());
             reply->deleteLater();
-    qDebug() << check;
+
             QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
             QJsonObject jsonObject = jsonResponse.object();
 
@@ -192,6 +192,9 @@ void DB_project::finished(QNetworkReply *reply){
         else{
             QMessageBox::information(this, "Error", reply->errorString());
         }
+    }
+    else if(mod_check == 3) {
+
     }
 }
 
