@@ -27,28 +27,9 @@ DB_project::DB_project(QWidget *parent) :
     int h1 = ui->inbody_img->height();
     ui->inbody_paper->setPixmap(pix1.scaled(w1,h1,Qt::KeepAspectRatio));
 
-    //button image set
-    QPixmap Search_btn(PATH + "/img/search_icon.png");
-    QIcon Search_icon(Search_btn);
-    ui->search_btn->setIcon(Search_icon);
-
-    QPixmap All_btn(PATH + "/img/all_icon.png");
-    QIcon All_icon(All_btn);
-    ui->all_btn->setIcon(All_icon);
-
-    QPixmap Left_btn(PATH + "/img/left_icon.png");
-    QIcon Left_icon(Left_btn);
-    ui->left_btn->setIcon(Left_icon);
-
-    QPixmap Right_btn(PATH + "/img/right_icon.png");
-    QIcon Right_icon(Right_btn);
-    ui->right_btn->setIcon(Right_icon);
 
     //start hide ui
     ui->s_login_group->hide();
-    ui->search_txt->hide();
-    ui->search_btn->hide();
-    ui->all_btn->hide();
     ui->guest_table->hide();
     ui->inbody_info_2->hide();
 
@@ -104,10 +85,7 @@ void DB_project::finished(QNetworkReply *reply){
                 ui->s_login_group->show();
 
                 ui->guest_table->show();
-                ui->search_txt->show();
-                ui->search_btn->show();
-                ui->all_btn->show();
-                ui->inbody_info_2->show();
+                ui->inbody_info_3->show();
                 ui->inbody_info_1->hide();
                 InfoSetTableView();    //login시 TableView보이기
             }
@@ -145,7 +123,6 @@ void DB_project::finished(QNetworkReply *reply){
     else if(mod_check == 2) {
         QString check;
 
-        QString tmp;
         QStringList list_id;
         QStringList list_name;
         QStringList list_gender;
@@ -194,11 +171,98 @@ void DB_project::finished(QNetworkReply *reply){
         }
     }
     else if(mod_check == 3) {
+        QString check;
+
+        QStringList list_key;
+        QStringList list_date;
+
+        if(reply->error() == QNetworkReply::NoError){
+            check = QObject::tr(reply->readAll());
+            reply->deleteLater();
+
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
+            QJsonObject jsonObject = jsonResponse.object();
+
+            int ArrayStatus = jsonObject["status"].toInt();
+            if(ArrayStatus == 100) {
+                int ArraySize = jsonObject["size"].toInt();
+                QJsonArray jsonArray = jsonObject["list"].toArray();
+
+
+                foreach (const QJsonValue & value, jsonArray) {
+                    QJsonObject obj = value.toObject();
+
+                    list_key.append(obj["key"].toString());
+                    list_date.append(obj["date"].toString());
+                }
+
+                //Table View
+                QStandardItemModel *model = new QStandardItemModel(ArraySize,2,this); //2 Rows and 3 Columns
+
+                model->setHorizontalHeaderItem(0, new QStandardItem(QString("Key")));
+                model->setHorizontalHeaderItem(1, new QStandardItem(QString("Date")));
+
+                ui->inbody_info_list->setModel(model);
+
+                //row 값넣기
+                for(int i = 0; i < ArraySize; i++) {
+                    model->setItem(i,0,new QStandardItem(QString(list_key[i])));
+                    model->setItem(i,1,new QStandardItem(QString(list_date[i])));
+                }
+            }
+            else QMessageBox::information(this, "JsonList", "You don't load Json Data");
+        }
+        else{
+            QMessageBox::information(this, "Error", reply->errorString());
+        }
+
+    }
+    else if(mod_check == 4){
+        QString check;
+
+        if(reply->error() == QNetworkReply::NoError){
+            check = QObject::tr(reply->readAll());
+            reply->deleteLater();
+
+            qDebug() << check;
+
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
+            QJsonObject jsonObject = jsonResponse.object();
+
+            int ArrayStatus = jsonObject["status"].toInt();
+            if(ArrayStatus == 100) {
+                float wicell = jsonObject["wicell"].toString("F1").toFloat();
+                float wocell = jsonObject["wocell"].toString().toFloat();
+                float protein = jsonObject["protein"].toString().toFloat();
+                float mineral = jsonObject["mineral"].toString().toFloat();
+                float body_fat = jsonObject["body_fat"].toString().toFloat();
+                float weight = jsonObject["weight"].toString().toFloat();
+                float s_muscle = jsonObject["s_muscle"].toString().toFloat();
+                float bmi = jsonObject["bmi"].toString().toFloat();
+                float p_body_fat = jsonObject["p_body_fat"].toString().toFloat();
+                float waist_hip = jsonObject["waist_hip"].toString().toFloat();
+
+                qDebug() << test1;
+                qDebug() << wicell;
+                qDebug() << wocell;
+                qDebug() << protein;
+                qDebug() << mineral;
+                qDebug() << body_fat;
+                qDebug() << weight;
+                qDebug() << s_muscle;
+                qDebug() << bmi;
+                qDebug() << p_body_fat;
+                qDebug() << waist_hip;
+
+            }
+            else QMessageBox::information(this, "JsonList", "You don't load Json Data");
+        }
+        else{
+            QMessageBox::information(this, "Error", reply->errorString());
+        }
 
     }
 }
-
-
 
 
 //logout
@@ -206,12 +270,10 @@ void DB_project::on_login_btn_5_clicked()
 {
     ui->s_login_group->hide();
     ui->login_group->show();
-    ui->search_txt->hide();
-    ui->search_btn->hide();
-    ui->all_btn->hide();
     ui->guest_table->hide();
     ui->inbody_info_2->hide();
     ui->inbody_info_1->show();
+    ui->inbody_info_3->hide();
 }
 
 void DB_project::InfoSetTableView() {
@@ -248,12 +310,38 @@ void DB_project::on_guest_table_clicked(const QModelIndex &index)
     QItemSelectionModel *selections = ui->guest_table->selectionModel();
     QModelIndexList selected = selections->selectedIndexes();
 
-    for(int i = 0 ; i < selected.size(); i++ )
-    {
-      //rowid = selected[i].row();
-      rowid = selected[i].data();
-      qDebug() << rowid.toString();
+//    for(int i = 0 ; i < selected.size(); i++ )
+//    {
+//      //rowid = selected[i].row();
+//      rowid = selected[i].data();
+//      qDebug() << rowid.toString();
+//    }
+    rowid = selected[0].data();
+    QString member_id = rowid.toString();
+
+    QString admin_id = ui->id_txt->text();
+
+
+
+    qDebug() << member_id;
+    //통신
+    QString url = "http://api.gois.me/info/select";
+
+    QByteArray post_data;
+    post_data.append("admin_id=").append(admin_id).append("&").append("admin_pw=").append(setadmin_pw).append("&");
+    post_data.append("id=").append(member_id);
+    QNetworkRequest request = QNetworkRequest(QUrl(url));
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    if(post_data.isEmpty()){
+        nam->get(request);
     }
+    else{
+        nam->post(request,post_data);
+    }
+
+    ui->inbody_info_2->hide();
+    ui->inbody_info_3->show();
+    mod_check = 3;
 }
 
 //member add btn
@@ -265,4 +353,39 @@ void DB_project::on_add_member_btn_clicked()
     member.set_admin(ui->id_txt->text(),setadmin_pw, nam, &mod_check);
     member.exec();
     member.show();
+}
+
+//member inbody list click
+void DB_project::on_inbody_info_list_clicked(const QModelIndex &index)
+{
+    QVariant rowid;
+
+    QItemSelectionModel *selections = ui->inbody_info_list->selectionModel();
+    QModelIndexList selected = selections->selectedIndexes();
+
+    rowid = selected[0].data();
+    QString key = rowid.toString();
+
+    QString admin_id = ui->id_txt->text();
+
+
+    //통신
+    QString url = "http://api.gois.me/info/detail";
+
+    QByteArray post_data;
+    post_data.append("admin_id=").append(admin_id).append("&").append("admin_pw=").append(setadmin_pw).append("&");
+    post_data.append("key=").append(key);
+    QNetworkRequest request = QNetworkRequest(QUrl(url));
+    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
+    if(post_data.isEmpty()){
+        nam->get(request);
+    }
+    else{
+        nam->post(request,post_data);
+    }
+
+    ui->inbody_info_2->show();
+    ui->inbody_info_3->hide();
+    mod_check = 4;
+
 }

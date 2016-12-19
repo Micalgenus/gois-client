@@ -172,8 +172,6 @@
       <string/>
      </property>
     </widget>
-    <zorder>inbody_img</zorder>
-    <zorder>s_login_group</zorder>
    </widget>
    <widget class="QGroupBox" name="guest_list">
     <property name="geometry">
@@ -193,7 +191,7 @@
        <x>10</x>
        <y>10</y>
        <width>221</width>
-       <height>531</height>
+       <height>561</height>
       </rect>
      </property>
      <property name="baseSize">
@@ -226,103 +224,6 @@
       <number>65</number>
      </attribute>
     </widget>
-    <widget class="QPushButton" name="search_btn">
-     <property name="geometry">
-      <rect>
-       <x>176</x>
-       <y>547</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="all_btn">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>547</y>
-       <width>25</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="search_txt">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>547</y>
-       <width>101</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>나눔바른고딕</family>
-      </font>
-     </property>
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="left_btn">
-    <property name="geometry">
-     <rect>
-      <x>943</x>
-      <y>105</y>
-      <width>25</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background:url(:/Resource/img/left_icon.png)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="right_btn">
-    <property name="geometry">
-     <rect>
-      <x>976</x>
-      <y>105</y>
-      <width>25</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background:url(:/Resource/img/right_icon.png)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
    </widget>
    <widget class="QGroupBox" name="s_login_group">
     <property name="geometry">
@@ -430,6 +331,43 @@
      <property name="text">
       <string/>
      </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="inbody_info_3">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>130</y>
+      <width>721</width>
+      <height>761</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QTableView" name="inbody_info_list">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>701</width>
+       <height>741</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>나눔바른고딕</family>
+      </font>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>300</number>
+     </attribute>
     </widget>
    </widget>
   </widget>

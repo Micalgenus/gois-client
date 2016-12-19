@@ -43,6 +43,8 @@ private slots:
     void InfoSetTableView();
 
 
+    void on_inbody_info_list_clicked(const QModelIndex &index);
+
 private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;
