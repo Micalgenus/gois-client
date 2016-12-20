@@ -56,7 +56,7 @@ void inbody_Dialog::on_pushButton_clicked()
         nam2->get(request);
     }
     else{
-        nam2->post(request,post_data);hihihi1234
+        nam2->post(request,post_data);
     }
     *mod_check2 = 5;
     connect(nam2,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
