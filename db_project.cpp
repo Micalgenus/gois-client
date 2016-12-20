@@ -17,7 +17,7 @@ DB_project::DB_project(QWidget *parent) :
     ui->setupUi(this);
 
     //Label image set
-    QPixmap pix(PATH + "/img/JJang1.jpg");
+    QPixmap pix(PATH + "/img/main2.png");
     int w = ui->inbody_img->width();
     int h = ui->inbody_img->height();
     ui->inbody_img->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
@@ -36,6 +36,7 @@ DB_project::DB_project(QWidget *parent) :
     ui->s_login_group->hide();
     ui->guest_table->hide();
     ui->inbody_info_2->hide();
+    ui->inbody_info_3->hide();
 
     //login
     nam = new QNetworkAccessManager(this);

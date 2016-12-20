@@ -281,7 +281,7 @@
     <widget class="QPushButton" name="add_member_btn">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>35</x>
        <y>69</y>
        <width>81</width>
        <height>23</height>
@@ -303,7 +303,7 @@
     <widget class="QPushButton" name="add_member_btn_2">
      <property name="geometry">
       <rect>
-       <x>130</x>
+       <x>128</x>
        <y>70</y>
        <width>81</width>
        <height>23</height>
