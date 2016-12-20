@@ -44,6 +44,7 @@ DB_project::DB_project(QWidget *parent) :
     ui->ID_label->setText("SM1092");
     ui->weight_progressBar->setValue(46);
     ui->s_muscle_progressBar->setValue(56);*/
+    a_Key = "";
 
 }
 
@@ -86,7 +87,15 @@ void DB_project::finished(QNetworkReply *reply){
         if(reply->error() == QNetworkReply::NoError){
             check = QObject::tr(reply->readAll());
             reply->deleteLater();
-            if(check == "{\"status\":100}") {
+
+            qDebug()<<check;
+
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
+            QJsonObject jsonObject = jsonResponse.object();
+            a_Key = jsonObject["key"].toString();
+            int jsonStatus = jsonObject["status"].toInt();
+
+            if(jsonStatus == 100) {
                 ui->login_group->hide();
                 ui->s_login_group->show();
 
@@ -118,6 +127,14 @@ void DB_project::finished(QNetworkReply *reply){
             if(jsonStatus == 100) {
               QMessageBox::information(this, "Key", "Your Key : "+ jsonKey);
               this_dialog->close();
+
+              inbody_Dialog inbody_mamber;
+              this_inbody = &inbody_mamber;
+              inbody_mamber.set_key(jsonKey, this->a_Key);
+              inbody_mamber.set_access(ui->id_txt->text(),setadmin_pw, nam, &mod_check);
+              inbody_mamber.exec();
+              inbody_mamber.show();
+
             }
             else QMessageBox::information(this, "Create", "Your User_Infor not correct!");
         }
@@ -301,6 +318,48 @@ void DB_project::finished(QNetworkReply *reply){
             QMessageBox::information(this, "Error", reply->errorString());
         }
 
+    }
+    else if(mod_check == 5){//인바디정보 생
+        QString check;
+        if(reply->error() == QNetworkReply::NoError){
+            check = QObject::tr(reply->readAll());
+            qDebug()<<check;
+
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
+            QJsonObject jsonObject = jsonResponse.object();
+            int jsonStatus = jsonObject["status"].toInt();
+            if(jsonStatus == 100) {
+              QMessageBox::information(this, "Create", "Create sucess");
+              this_inbody->close();
+              InfoSetTableView();
+            }
+            else QMessageBox::information(this, "Create", "Your User_Infor not correct!");
+        }
+        else{
+            //ui->id_txt->setText(reply->errorString());
+        }
+        //ui->pw_txt->clear();
+    }
+    else if(mod_check == 6){//인바디 점수 등록
+        QString check;
+        if(reply->error() == QNetworkReply::NoError){
+            check = QObject::tr(reply->readAll());
+            qDebug()<<check;
+
+            QJsonDocument jsonResponse = QJsonDocument::fromJson(check.toUtf8());
+            QJsonObject jsonObject = jsonResponse.object();
+            int jsonStatus = jsonObject["status"].toInt();
+            if(jsonStatus == 100) {
+              QMessageBox::information(this, "Create", "Create sucess");
+              this_inbody->close();
+              InfoSetTableView();
+            }
+            else QMessageBox::information(this, "Create", "Your User_Infor not correct!");
+        }
+        else{
+            //ui->id_txt->setText(reply->errorString());
+        }
+        //ui->pw_txt->clear();
     }
 }
 

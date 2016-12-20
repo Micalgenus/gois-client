@@ -12,6 +12,7 @@
 #include <QtNetwork/QNetworkReply>
 #include <QTextCodec>
 #include "dialog_createkey.h"
+#include "inbody_dialog.h"
 
 #define PATH (QApplication::applicationDirPath() + "/../../")
 
@@ -26,6 +27,7 @@ class DB_project : public QMainWindow
 public:
     explicit DB_project(QWidget *parent = 0);
     int mod_check;
+    QString a_Key;
     ~DB_project();
 
 private slots:
@@ -51,6 +53,7 @@ private:
     QString setadmin_pw;
     QString birth;
     dialog_createkey* this_dialog;
+    inbody_Dialog* this_inbody;
 
 };
 

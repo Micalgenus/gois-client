@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         db_project.cpp \
-    dialog_createkey.cpp
+    dialog_createkey.cpp \
+    inbody_dialog.cpp
 
 HEADERS  += db_project.h \
-    dialog_createkey.h
+    dialog_createkey.h \
+    inbody_dialog.h
 
 FORMS    += db_project.ui \
-    dialog_createkey.ui
+    dialog_createkey.ui \
+    inbody_dialog.ui
 
 DISTFILES += \
     Resource/img/bg.jpg \
