@@ -47,6 +47,8 @@ private slots:
 
     void on_inbody_info_list_clicked(const QModelIndex &index);
 
+    void on_Re_pushButton_clicked();
+
 private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;

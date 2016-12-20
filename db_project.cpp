@@ -501,3 +501,8 @@ void DB_project::on_inbody_info_list_clicked(const QModelIndex &index)
     mod_check = 4;
 
 }
+
+void DB_project::on_Re_pushButton_clicked()
+{
+    InfoSetTableView();//목록 재생성
+}
