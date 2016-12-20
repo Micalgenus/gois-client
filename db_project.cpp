@@ -301,7 +301,7 @@ void DB_project::finished(QNetworkReply *reply){
                 ui->NR_s_muscle_label->setText(QString::number(s_muscle+0.9) + " ~ " + QString::number(s_muscle+9.2));
                 ui->NR_bmi_label->setText(QString::number(bmi+0.1) + " ~ " + QString::number(bmi+7));
                 ui->NR_p_body_fat__label->setText(QString::number(p_body_fat-2.8) + " ~ " + QString::number(p_body_fat+7.2));
-                ui->NR_waist_hip__label->setText(QString::number(waist_hip-0.1) + " ~ " + QString::number(p_body_fat+0.9));
+                ui->NR_waist_hip__label->setText(QString::number(waist_hip-0.1) + " ~ " + QString::number(waist_hip+0.9));
 
                 //balance
                 ui->SE_righta_label->setText("0.331");
@@ -323,7 +323,7 @@ void DB_project::finished(QNetworkReply *reply){
                 ui->body_fat_progressBar->setValue(body_fat);
                 ui->bmi_progressBar->setValue(bmi);
                 ui->p_body_fat_progressBar->setValue(p_body_fat);
-                ui->waist_hip_progressBar->setValue(waist_hip);
+                ui->waist_hip_progressBar->setValue(waist_hip*10);
 
                 //Lean Balance
                 ui->righta_progressBar->setValue(62);
