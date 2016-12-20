@@ -49,6 +49,8 @@ private slots:
 
     void on_Re_pushButton_clicked();
 
+    void on_add_member_btn_2_clicked();
+
 private:
     Ui::DB_project *ui;
     QNetworkAccessManager *nam;

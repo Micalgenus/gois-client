@@ -541,3 +541,14 @@ void DB_project::on_Re_pushButton_clicked()
 {
     InfoSetTableView();//목록 재생성
 }
+
+void DB_project::on_add_member_btn_2_clicked()
+{
+    inbody_Dialog inbody_mamber;
+    this_inbody = &inbody_mamber;
+    inbody_mamber.set_key("", this->a_Key);
+    inbody_mamber.set_access(ui->id_txt->text(),setadmin_pw, nam, &mod_check);
+    inbody_mamber.exec();
+    inbody_mamber.show();
+
+}

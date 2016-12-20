@@ -80,6 +80,7 @@ void inbody_Dialog::on_pushButton_clicked()
     }
     *mod_check2 = 6;
     connect(nam2,SIGNAL(finished(QNetworkReply*)),this,SLOT(finished(QNetworkReply*)));
+    createkey = "";
 
 }
 
