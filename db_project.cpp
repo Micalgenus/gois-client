@@ -284,6 +284,34 @@ void DB_project::finished(QNetworkReply *reply){
                 ui->add_body_fat_label->setText(QString::number(wicell+wocell+protein+mineral));
                 ui->add_body_fat_label->setText(QString::number(wicell+wocell+protein+mineral+body_fat));
 
+
+                //표준범위
+                ui->NR_wicell_label->setText(QString::number(wicell+0.3) + " ~ " + QString::number(wicell+4.9));
+                ui->NR_wocell_label->setText(QString::number(wocell) + " ~ " + QString::number(wocell+1.9));
+                ui->NR_protein_label->setText(QString::number(protein+0.2) + " ~ " + QString::number(protein+1.7));
+                ui->NR_mineral_label->setText(QString::number(mineral-0.11) + " ~ " + QString::number(mineral+0.44));
+                ui->NR_body_fat_label->setText(QString::number(p_body_fat+0.9) + " ~ " + QString::number(p_body_fat+7.2));
+                ui->NR_body_fat_label_2->setText(QString::number(p_body_fat+0.9) + " ~ " + QString::number(p_body_fat+7.2));
+                ui->NR_weight_label->setText(QString::number(((height-100)*0.9)-10) + " ~ " + QString::number(((height-100)*0.9)+10));
+                ui->NR_s_muscle_label->setText(QString::number(s_muscle+0.9) + " ~ " + QString::number(s_muscle+9.2));
+                ui->NR_bmi_label->setText(QString::number(bmi+0.1) + " ~ " + QString::number(bmi+7));
+                ui->NR_p_body_fat__label->setText(QString::number(p_body_fat-2.8) + " ~ " + QString::number(p_body_fat+7.2));
+                ui->NR_waist_hip__label->setText(QString::number(waist_hip-0.1) + " ~ " + QString::number(p_body_fat+0.9));
+
+                //balance
+                ui->SE_righta_label->setText("0.331");
+                ui->SE_righta_label_2->setText("0.331");
+                ui->SE_lefta_label->setText("0.331");
+                ui->SE_lefta_label_2->setText("0.377");
+                ui->SE_body_label->setText("0.348");
+                ui->SE_body_label_2->setText("0.348");
+                ui->SE_rightf_label->setText("0.342");
+                ui->SE_rightf_label_2->setText("0.342");
+                ui->SE_leftf_label->setText("0.348");
+                ui->SE_leftf_label_2->setText("0.395");
+
+
+
                 //process bar
                 ui->weight_progressBar->setValue(weight);
                 ui->s_muscle_progressBar->setValue(s_muscle);
