@@ -27,8 +27,12 @@ DB_project::DB_project(QWidget *parent) :
     int h1 = ui->inbody_img->height();
     ui->inbody_paper->setPixmap(pix1.scaled(w1,h1,Qt::KeepAspectRatio));
 
+    QPixmap All_btn(PATH + "/img/reflesh.png");
+    QIcon All_icon(All_btn);
+    ui->Re_pushButton->setIcon(All_icon);
 
     //start hide ui
+    ui->Re_pushButton->hide();
     ui->s_login_group->hide();
     ui->guest_table->hide();
     ui->inbody_info_2->hide();
@@ -99,8 +103,9 @@ void DB_project::finished(QNetworkReply *reply){
                 ui->login_group->hide();
                 ui->s_login_group->show();
 
+                ui->Re_pushButton->show();
                 ui->guest_table->show();
-                ui->inbody_info_3->show();
+
                 ui->inbody_info_1->hide();
                 InfoSetTableView();    //login시 TableView보이기
             }
@@ -357,7 +362,7 @@ void DB_project::finished(QNetworkReply *reply){
             QJsonObject jsonObject = jsonResponse.object();
             int jsonStatus = jsonObject["status"].toInt();
             if(jsonStatus == 100) {
-              QMessageBox::information(this, "Create", "Create sucess");
+             // QMessageBox::information(this, "Create", "Create sucess");
               this_inbody->close();
               InfoSetTableView();
             }
@@ -401,6 +406,7 @@ void DB_project::on_login_btn_5_clicked()
     ui->inbody_info_2->hide();
     ui->inbody_info_1->show();
     ui->inbody_info_3->hide();
+    ui->Re_pushButton->hide();
 }
 
 void DB_project::InfoSetTableView() {
@@ -432,6 +438,7 @@ void DB_project::MakeTableView(QNetworkReply *reply) {
 //Table View Select
 void DB_project::on_guest_table_clicked(const QModelIndex &index)
 {
+    ui->inbody_info_3->show();
     QVariant rowid;
 
     QItemSelectionModel *selections = ui->guest_table->selectionModel();

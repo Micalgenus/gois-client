@@ -75,7 +75,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>두인수</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="keycreate_birthtext">
@@ -88,7 +88,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>1992-12-15</string>
+    <string>0000-00-00</string>
    </property>
   </widget>
   <widget class="QLabel" name="keycreate_birthlab">

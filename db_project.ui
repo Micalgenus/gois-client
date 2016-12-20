@@ -1073,14 +1073,14 @@
    <widget class="QPushButton" name="Re_pushButton">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>270</y>
-      <width>51</width>
-      <height>31</height>
+      <x>240</x>
+      <y>280</y>
+      <width>21</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>RE</string>
+     <string/>
     </property>
    </widget>
   </widget>
